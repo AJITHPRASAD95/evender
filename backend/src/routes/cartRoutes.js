@@ -1,0 +1,1 @@
+const router=require('express').Router();const c=require('../controllers/cartController');router.post('/items',c.addItem);router.get('/',c.getCart);router.patch('/items/:itemId',c.updateItem);router.delete('/items/:itemId',c.removeItem);router.post('/validate',c.validate);module.exports=router;

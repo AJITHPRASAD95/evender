@@ -1,0 +1,2 @@
+const test=require('node:test');const assert=require('node:assert/strict');const {calculatePricing}=require('../src/services/pricingService');
+test('three shops at 4km costs 66 delivery',()=>{const origin={latitude:0,longitude:0};const fourKm={latitude:0.035973,longitude:0};const groups=[1,2,3].map(()=>({subtotal:100,shop:{location:origin}}));const result=calculatePricing(groups,fourKm);assert.equal(result.deliveryFee,66);assert.equal(result.grandTotal,371);});

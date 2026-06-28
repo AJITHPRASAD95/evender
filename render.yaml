@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: freshlane-hyperlocal
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: NODE_ENV
+        value: production
+      - key: LOCAL_SERVE_WEB
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: ADMIN_PHONE
+        value: "9999999999"
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
+      - key: PLATFORM_FEE
+        value: "5"
+      - key: BASE_DELIVERY_FEE
+        value: "30"
+      - key: EXTRA_SHOP_PICKUP_FEE
+        value: "10"
+      - key: DISTANCE_FEE_PER_KM
+        value: "8"
+      - key: FREE_DISTANCE_KM
+        value: "2"

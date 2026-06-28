@@ -1,0 +1,10 @@
+backend/node_modules/
+backend/.cache/
+backend/.env
+backend/.local-server.*
+.dart_tool/
+.flutter-plugins*
+build/
+outputs/
+work/
+*.log

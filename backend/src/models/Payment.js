@@ -1,0 +1,3 @@
+const { mongoose } = require('./common');
+const schema = new mongoose.Schema({ customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true }, masterOrderId: { type: mongoose.Schema.Types.ObjectId, ref: 'MasterOrder' }, cartId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' }, razorpayOrderId: { type: String, unique: true, sparse: true }, razorpayPaymentId: String, razorpaySignature: String, amount: { type: Number, required: true }, status: { type: String, enum: ['created','paid','failed','refunded','partial_refund'], default: 'created' }, checkoutSnapshot: mongoose.Schema.Types.Mixed }, { timestamps: true });
+module.exports = mongoose.model('Payment', schema);

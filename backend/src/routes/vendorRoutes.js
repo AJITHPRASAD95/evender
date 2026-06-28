@@ -1,0 +1,1 @@
+const router=require('express').Router();const c=require('../controllers/vendorController');router.get('/orders',c.orders);router.patch('/orders/:subOrderId/status',c.status);router.get('/products',c.products);router.post('/products',c.createProduct);router.patch('/products/:productId',c.updateProduct);router.delete('/products/:productId',c.deleteProduct);module.exports=router;

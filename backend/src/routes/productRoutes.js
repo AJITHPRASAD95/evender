@@ -1,0 +1,1 @@
+const router=require('express').Router();const Product=require('../models/Product');router.get('/',async(req,res,next)=>{try{res.json({success:true,data:await Product.find({shopId:req.query.shopId,isAvailable:true})});}catch(e){next(e)}});module.exports=router;

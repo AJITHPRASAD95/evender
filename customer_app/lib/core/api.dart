@@ -1,0 +1,3 @@
+import 'dart:convert';import 'package:http/http.dart' as http;
+class Api{Api({this.baseUrl='http://10.0.2.2:4000/api'});final String baseUrl;String? token;Future<dynamic> call(String path,{String method='GET',Object? body})async{final r=await http.Request(method,Uri.parse('$baseUrl$path'))..headers.addAll({'Content-Type':'application/json',if(token!=null)'Authorization':'Bearer $token'});if(body!=null)r.body=jsonEncode(body);final streamed=await r.send();final response=await http.Response.fromStream(streamed);final json=jsonDecode(response.body);if(response.statusCode>=400)throw Exception(json['message']);return json['data'];}}
+final api=Api();

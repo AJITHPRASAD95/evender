@@ -1,0 +1,1 @@
+const router=require('express').Router();const c=require('../controllers/deliveryController');router.get('/assigned-orders',c.assigned);router.patch('/orders/:subOrderId/pickup',c.pickup);router.patch('/orders/:subOrderId/deliver',c.deliver);router.post('/update-location',c.updateLocation);module.exports=router;
