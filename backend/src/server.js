@@ -1,4 +1,8 @@
 require('dotenv').config();
+const crypto=require('crypto');
+process.env.JWT_SECRET||=crypto.randomBytes(32).toString('hex');
+process.env.ADMIN_PHONE||='9999999999';
+process.env.ADMIN_PASSWORD||='Admin@123';
 const path=require('path');const express=require('express');const cors=require('cors');const helmet=require('helmet');const morgan=require('morgan');const {connectDB}=require('./config/db');const {auth}=require('./middlewares/authMiddleware');const {allow}=require('./middlewares/roleMiddleware');const {notFound,errorHandler}=require('./middlewares/errorMiddleware');
 const serveWeb=process.env.LOCAL_SERVE_WEB!=='false';const app=express();app.use(helmet({contentSecurityPolicy:serveWeb?false:undefined}));app.use(cors({origin:process.env.APP_ORIGIN?.split(',')||true}));app.use(express.json({limit:'1mb'}));app.use(morgan('dev'));app.get('/health',(_q,r)=>r.json({success:true,service:'hyperlocal-api'}));
 app.use('/api/auth',require('./routes/authRoutes'));app.use('/api/shops',require('./routes/shopRoutes'));app.use('/api/products',require('./routes/productRoutes'));
