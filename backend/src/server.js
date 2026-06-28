@@ -1,6 +1,6 @@
 require('dotenv').config();
 const crypto=require('crypto');
-process.env.JWT_SECRET||=crypto.randomBytes(32).toString('hex');
+process.env.JWT_SECRET||=crypto.createHash('sha256').update(process.env.MONGODB_URI||'freshlane-local-development').digest('hex');
 process.env.ADMIN_PHONE||='9999999999';
 process.env.ADMIN_PASSWORD||='Admin@123';
 const path=require('path');const express=require('express');const cors=require('cors');const helmet=require('helmet');const morgan=require('morgan');const {connectDB}=require('./config/db');const {auth}=require('./middlewares/authMiddleware');const {allow}=require('./middlewares/roleMiddleware');const {notFound,errorHandler}=require('./middlewares/errorMiddleware');
