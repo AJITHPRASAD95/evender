@@ -25,12 +25,6 @@ services:
         sync: false
       - key: MONGODB_URI
         sync: false
-      - key: RAZORPAY_KEY_ID
-        sync: false
-      - key: RAZORPAY_KEY_SECRET
-        sync: false
-      - key: FIREBASE_SERVICE_ACCOUNT_JSON
-        sync: false
       - key: PLATFORM_FEE
         value: "5"
       - key: BASE_DELIVERY_FEE
