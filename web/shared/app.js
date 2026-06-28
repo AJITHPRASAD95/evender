@@ -1,4 +1,4 @@
-const API=localStorage.apiBase||'http://localhost:4000/api';
+const API=localStorage.apiBase||`${location.origin}/api`;
 async function request(path,options={}){const r=await fetch(API+path,{...options,headers:{'Content-Type':'application/json',Authorization:`Bearer ${localStorage.token}`,...options.headers}});const body=await r.json();if(!r.ok)throw new Error(body.message||'Request failed');return body.data}
 async function login(role){const phone=document.querySelector('#phone').value,password=document.querySelector('#password').value;try{const data=await request('/auth/login',{method:'POST',body:JSON.stringify({phone,password,role})});localStorage.token=data.token;location.href=role==='admin'?'admin-dashboard.html':'vendor-dashboard.html'}catch(e){document.querySelector('.error').textContent=e.message}}
 function logout(){localStorage.removeItem('token');location.href=location.pathname.includes('admin-')?'admin-login.html':'vendor-login.html'}
