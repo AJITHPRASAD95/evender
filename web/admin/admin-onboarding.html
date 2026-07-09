@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Easy onboarding</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="side" id="sidebar"></aside>
+    <main class="main">
+      <header class="top">
+        <div>
+          <p class="muted" style="margin:0">Launch checklist</p>
+          <h1>Easy admin onboarding</h1>
+          <p class="muted">Create a vendor, set their delivery location, add first products, then approve and monitor orders.</p>
+        </div>
+        <div class="top-actions">
+          <a class="btn ghost" href="admin-shops.html">Review shops</a>
+          <a class="btn" href="admin-orders.html">View orders</a>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="card"><div class="metric-label">Total shops<span class="metric-icon">S</span></div><div class="metric" id="onboard-shops">-</div></div>
+        <div class="card"><div class="metric-label">Products live<span class="metric-icon">P</span></div><div class="metric" id="onboard-products">-</div></div>
+        <div class="card"><div class="metric-label">Orders received<span class="metric-icon">O</span></div><div class="metric" id="onboard-orders">-</div></div>
+        <div class="card"><div class="metric-label">Pending review<span class="metric-icon">!</span></div><div class="metric" id="onboard-pending">-</div></div>
+      </section>
+
+      <section class="onboarding-hero section-card">
+        <div>
+          <span class="badge">Recommended flow</span>
+          <h2>1. Add vendor -> 2. Add products -> 3. Approve shop -> 4. Start taking orders</h2>
+          <p class="muted">Use this page when a new local store joins. It captures the login credentials, map location, delivery radius, commission and starter catalogue in one place.</p>
+        </div>
+        <div class="checklist">
+          <div><strong>Vendor location</strong><span>Latitude + longitude decides customer visibility.</span></div>
+          <div><strong>Starter products</strong><span>Add 5-10 fast moving items first.</span></div>
+          <div><strong>Operations review</strong><span>Confirm open status, commission and stock.</span></div>
+        </div>
+      </section>
+
+      <section class="split section-card">
+        <form class="card" onsubmit="createAdminShop(event)">
+          <h2>Add new vendor</h2>
+          <p class="muted">Default password can be changed here before creating the vendor login.</p>
+          <div class="form-grid">
+            <label>Shop name<input name="shopName" placeholder="Prasin Bakers" required></label>
+            <label>Owner name<input name="ownerName" placeholder="Owner name" required></label>
+            <label>Phone<input name="phone" placeholder="8888888888" required></label>
+            <label>Password<input name="password" value="Vendor@123" required></label>
+            <label>Shop type<select name="shopType"><option value="supermarket">Supermarket</option><option value="bakery">Bakery</option><option value="vegetables">Vegetables</option><option value="fish">Fresh fish</option><option value="meat">Meat</option><option value="dairy">Dairy</option><option value="other">Other</option></select></label>
+            <label>Status<select name="status"><option value="approved">Approved</option><option value="pending">Pending review</option><option value="suspended">Suspended</option></select></label>
+            <label>Latitude<input name="latitude" type="number" step="any" value="9.714930" required></label>
+            <label>Longitude<input name="longitude" type="number" step="any" value="76.410654" required></label>
+            <label>Delivery radius km<input name="deliveryRadiusKm" type="number" value="10" min="0"></label>
+            <label>Commission %<input name="commissionPercentage" type="number" value="10" min="0" max="100"></label>
+          </div>
+          <label>Address<textarea name="address" rows="3" placeholder="Store address visible to customers"></textarea></label>
+          <button class="btn" type="submit">Create vendor login</button>
+          <p class="notice" id="shop-create-message">Tip: copy the generated phone/password and share it with the vendor.</p>
+        </form>
+
+        <form class="card" onsubmit="createAdminProduct(event)">
+          <h2>Add starter product</h2>
+          <p class="muted">Choose a shop and quickly build the first catalogue.</p>
+          <label>Shop<select id="product-shop" name="shopId" required><option value="">Loading shops...</option></select></label>
+          <div class="form-grid">
+            <label>Product name<input name="name" placeholder="Milk bread" required></label>
+            <label>Category<input name="category" placeholder="Bakery" required></label>
+            <label>MRP<input name="price" type="number" step="0.01" placeholder="45" required></label>
+            <label>Offer price<input name="offerPrice" type="number" step="0.01" placeholder="40"></label>
+            <label>Stock<input name="stockQuantity" type="number" value="20" min="0"></label>
+            <label>Unit<select name="unit"><option value="piece">Piece</option><option value="packet">Packet</option><option value="kg">Kg</option><option value="g">Gram</option><option value="litre">Litre</option></select></label>
+          </div>
+          <label>Image URL<input name="imageUrl" placeholder="https://..."></label>
+          <label>Description<textarea name="description" rows="3" placeholder="Short customer-facing product details"></textarea></label>
+          <button class="btn" type="submit">Add product</button>
+          <p class="notice" id="product-create-message">Add 5 products to make a shop look ready for customers.</p>
+        </form>
+      </section>
+
+      <section class="card section-card">
+        <div class="top" style="margin-bottom:10px">
+          <div>
+            <h2>Recently onboarded shops</h2>
+            <p class="muted">Use this as a quick confirmation after creating a shop.</p>
+          </div>
+          <button class="btn ghost" onclick="loadAdminOnboarding()">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Shop</th><th>Type</th><th>Location</th><th>Status</th><th>Next</th></tr></thead>
+            <tbody id="onboard-recent-shops"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../shared/app.js"></script>
+  <script src="../shared/admin.js"></script>
+  <script>sidebar.innerHTML=navAdmin('onboarding');loadAdminOnboarding().catch(e=>alert(e.message))</script>
+</body>
+</html>
