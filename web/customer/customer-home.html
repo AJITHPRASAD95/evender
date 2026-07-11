@@ -1,1 +1,75 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>FreshLane - local groceries</title><link rel="stylesheet" href="customer.css"></head><body><div class="promo">Free delivery on your first order - one cart across every local shop</div><header class="customer-nav"><a class="logo" href="customer-home.html"><span class="logo-mark">F</span><span>FreshLane</span></a><div class="location"><span class="location-pin">&#9679;</span><div><strong>Delivering nearby</strong><small id="location-label">Select an address</small></div></div><div class="nav-search"><span aria-hidden="true">&#128269;</span><input aria-label="Search products and shops" placeholder="Search products and shops" oninput="searchCustomer(this.value)"></div><nav><a class="nav-action" href="customer-home.html">Explore</a><a class="nav-action" href="customer-orders.html">Orders</a><a class="nav-action" href="customer-profile.html">Account</a><a class="nav-action cart-link" href="customer-cart.html">Cart</a></nav></header><main class="wrap"><section class="hero"><div class="hero-copy"><span class="eyebrow">ONE CART - MANY SHOPS</span><h1>Your whole neighbourhood, delivered.</h1><p>Groceries, farm-fresh produce, bakery, meat and more from trusted shops around you.</p><div class="hero-cta"><a class="btn" href="#shops">Shop nearby</a><a class="btn secondary" href="customer-profile.html">Set delivery address</a></div><div class="hero-proof"><div><strong>20 min</strong><small>average delivery</small></div><div><strong>100%</strong><small>local stores</small></div><div><strong>1 cart</strong><small>simple checkout</small></div></div></div><div class="hero-image"></div></section><section><div class="section-head"><div><h2>Shop by category</h2><p>Everything you need, just around the corner.</p></div></div><div class="categories"><button class="category" onclick="filterCategory('vegetables')"><span class="category-icon"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=300&q=80" alt="Vegetables"></span><strong>Vegetables</strong></button><button class="category" onclick="filterCategory('supermarket')"><span class="category-icon"><img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=300&q=80" alt="Supermarket"></span><strong>Supermarket</strong></button><button class="category" onclick="filterCategory('bakery')"><span class="category-icon"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80" alt="Bakery"></span><strong>Bakery</strong></button><button class="category" onclick="filterCategory('fish')"><span class="category-icon"><img src="https://images.unsplash.com/photo-1534043464124-3be32fe000c9?auto=format&fit=crop&w=300&q=80" alt="Fresh fish"></span><strong>Fresh fish</strong></button><button class="category" onclick="filterCategory('meat')"><span class="category-icon"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=300&q=80" alt="Meat"></span><strong>Meat</strong></button><button class="category" onclick="filterCategory('dairy')"><span class="category-icon"><img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=300&q=80" alt="Dairy"></span><strong>Dairy</strong></button></div></section><section id="shops"><div class="section-head"><div><h2 id="section-title">Finding shops near you...</h2><p>Live catalogues from verified neighbourhood sellers.</p></div><button id="clear-filter" class="btn secondary" hidden onclick="filterCategory('')">Show all</button></div><p class="error"></p><div id="cards" class="cards"></div></section><section class="promise"><div class="promise-card"><span class="promise-icon">&#9889;</span><div><h3>Fast delivery</h3><p>Smart routing across multiple pickups.</p></div></div><div class="promise-card"><span class="promise-icon">&#10003;</span><div><h3>Freshness first</h3><p>Products packed directly by local shops.</p></div></div><div class="promise-card"><span class="promise-icon">&#128274;</span><div><h3>Secure checkout</h3><p>One trusted payment for your whole cart.</p></div></div></section></main><footer><div class="wrap footer-row"><a class="logo" style="color:#fff" href="customer-home.html">FreshLane</a><span>Local commerce, beautifully connected.</span></div></footer><script src="customer.js"></script><script>loadCustomerHome()</script></body></html>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>FreshLane - instant local groceries</title>
+  <link rel="stylesheet" href="customer.css">
+</head>
+<body class="zepto-home">
+  <div class="promo">Free delivery on your first order - one cart across every local shop</div>
+  <header class="customer-nav quick-nav">
+    <a class="logo" href="customer-home.html"><span class="logo-mark">F</span><span>FreshLane</span></a>
+    <a class="location quick-location" href="customer-profile.html">
+      <span class="location-pin">&#9679;</span>
+      <div><strong>Delivering nearby</strong><small id="location-label">Select an address</small></div>
+    </a>
+    <div class="nav-search">
+      <span aria-hidden="true">&#128269;</span>
+      <input aria-label="Search products and shops" placeholder="Search atta, milk, bread..." oninput="searchCustomer(this.value)">
+    </div>
+    <nav>
+      <a class="nav-action" href="#shops">Shops</a>
+      <a class="nav-action" href="customer-orders.html">Orders</a>
+      <a class="nav-action" href="customer-profile.html">Account</a>
+      <a class="nav-action cart-link" href="customer-cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main class="wrap quick-wrap">
+    <section class="quick-hero">
+      <div>
+        <span class="eyebrow">LOCAL STORES - FAST DELIVERY</span>
+        <h1>Groceries from nearby shops, ready in minutes.</h1>
+        <p>Shop products first, or pick a favourite local store. One cart works across every vendor.</p>
+      </div>
+      <a class="btn" href="#products">Start shopping</a>
+    </section>
+
+    <section class="quick-categories">
+      <button class="quick-chip active" onclick="filterCategory('')">All</button>
+      <button class="quick-chip" onclick="filterCategory('supermarket')">Supermarket</button>
+      <button class="quick-chip" onclick="filterCategory('bakery')">Bakery</button>
+      <button class="quick-chip" onclick="filterCategory('vegetables')">Vegetables</button>
+      <button class="quick-chip" onclick="filterCategory('fish')">Fresh fish</button>
+      <button class="quick-chip" onclick="filterCategory('meat')">Meat</button>
+      <button class="quick-chip" onclick="filterCategory('dairy')">Dairy</button>
+    </section>
+
+    <section id="shops" class="quick-section">
+      <div class="section-head compact-head">
+        <div>
+          <h2>Choose a shop</h2>
+          <p>Tap a store to see only its products, or keep All selected.</p>
+        </div>
+        <button id="all-shops-button" class="btn secondary" onclick="selectHomeShop('')">All shops</button>
+      </div>
+      <div id="shop-strip" class="shop-strip"></div>
+    </section>
+
+    <section id="products" class="quick-section">
+      <div class="section-head compact-head">
+        <div>
+          <h2 id="section-title">Loading products near you...</h2>
+          <p id="products-subtitle">Fresh picks from verified neighbourhood sellers.</p>
+        </div>
+      </div>
+      <p class="error"></p>
+      <div id="cards" class="cards quick-products"></div>
+    </section>
+  </main>
+
+  <script src="customer.js"></script>
+  <script>loadCustomerHome()</script>
+</body>
+</html>
