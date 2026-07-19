@@ -34,6 +34,11 @@
           <span class="badge">Recommended flow</span>
           <h2>1. Add vendor -> 2. Add products -> 3. Approve shop -> 4. Start taking orders</h2>
           <p class="muted">Use this page when a new local store joins. It captures the login credentials, map location, delivery radius, commission and starter catalogue in one place.</p>
+          <div class="mobile-admin-tips">
+            <a href="#vendor-form"><strong>Add vendor</strong><small>Create login and location</small></a>
+            <a href="#product-form"><strong>Add products</strong><small>Build first catalogue</small></a>
+            <a href="admin-shops.html"><strong>Review shops</strong><small>Approve or suspend</small></a>
+          </div>
         </div>
         <div class="checklist">
           <div><strong>Vendor location</strong><span>Latitude + longitude decides customer visibility.</span></div>
@@ -43,7 +48,7 @@
       </section>
 
       <section class="split section-card">
-        <form class="card" onsubmit="createAdminShop(event)">
+        <form id="vendor-form" class="card" onsubmit="createAdminShop(event)">
           <h2>Add new vendor</h2>
           <p class="muted">Default password can be changed here before creating the vendor login.</p>
           <div class="form-grid">
@@ -63,7 +68,7 @@
           <p class="notice" id="shop-create-message">Tip: copy the generated phone/password and share it with the vendor.</p>
         </form>
 
-        <form class="card" onsubmit="createAdminProduct(event)">
+        <form id="product-form" class="card" onsubmit="createAdminProduct(event)">
           <h2>Add starter product</h2>
           <p class="muted">Choose a shop and quickly build the first catalogue.</p>
           <label>Shop<select id="product-shop" name="shopId" required><option value="">Loading shops...</option></select></label>
