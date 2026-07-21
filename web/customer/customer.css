@@ -66,3 +66,157 @@
   .hero-mini-stats{grid-template-columns:1fr}
   .quick-categories{top:147px}
 }
+
+@media(max-width:700px){
+  .quick-nav{
+    position:sticky;
+    top:0;
+    background:linear-gradient(180deg,#ffffff 0%,#fbfdf9 100%);
+    border-bottom:1px solid #e8efe9;
+    box-shadow:0 8px 24px rgba(9,43,27,.06);
+  }
+  .quick-nav .logo span:last-child{letter-spacing:-.7px}
+  .quick-nav .cart-link{
+    background:#0f8f53!important;
+    box-shadow:0 9px 20px rgba(20,134,79,.22);
+  }
+  .quick-nav .quick-location{
+    background:linear-gradient(135deg,#e8f8ef,#f7fffa);
+    border:1px solid #d5eee0;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.7);
+  }
+  .quick-nav .nav-search span{top:10px}
+  .quick-nav .nav-search input{
+    background:#fff;
+    border:1px solid #e0e8e1;
+    padding-left:39px;
+  }
+  .top-usp-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    overflow:visible;
+    margin:0 0 6px;
+    padding:0;
+  }
+  .top-usp-strip div{
+    min-width:0;
+    border-radius:12px;
+    padding:7px 6px;
+    text-align:center;
+    background:rgba(255,255,255,.9);
+  }
+  .top-usp-strip strong{font-size:11px;white-space:nowrap}
+  .top-usp-strip span{display:none}
+  .hero-premium{
+    background:
+      radial-gradient(circle at 82% 88%,rgba(255,255,255,.22),transparent 34%),
+      radial-gradient(circle at 18% 18%,rgba(255,255,255,.16),transparent 24%),
+      linear-gradient(145deg,#05371f 0%,#0e7f49 56%,#20b86c 100%);
+    box-shadow:0 18px 42px rgba(9,74,42,.18);
+  }
+  .hero-premium:after{
+    content:"";
+    position:absolute;
+    right:-48px;
+    bottom:-78px;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,.13);
+  }
+  .hero-main-copy{position:relative;z-index:1}
+  .hero-premium h1{max-width:285px}
+  .hero-premium p{max-width:292px}
+  .hero-primary{color:#07522f!important}
+  .hero-secondary{background:rgba(255,255,255,.12)!important}
+  .hero-mini-stats span{
+    backdrop-filter:blur(8px);
+    background:rgba(255,255,255,.14);
+  }
+  .quick-categories{
+    background:linear-gradient(180deg,#f7f8f4 78%,rgba(247,248,244,0));
+    box-shadow:0 10px 22px rgba(9,43,27,.04);
+  }
+  .quick-chip{
+    background:#fff;
+    color:#16824f;
+    border-color:#e5ebe6;
+    box-shadow:0 6px 16px rgba(9,43,27,.06);
+  }
+  .quick-chip.active{
+    background:#075c35;
+    color:#fff;
+    box-shadow:0 10px 22px rgba(7,92,53,.2);
+  }
+  #products .compact-head h2:after{
+    content:"";
+    display:block;
+    width:42px;
+    height:4px;
+    border-radius:999px;
+    background:#19a463;
+    margin-top:5px;
+  }
+  .quick-products{align-items:stretch}
+  .quick-product{
+    border:1px solid #e5ece6;
+    border-radius:18px;
+    box-shadow:0 10px 24px rgba(9,43,27,.06);
+    background:#fff;
+    overflow:hidden;
+  }
+  .quick-product .image-wrap{background:#f0f7f2}
+  .quick-product .card-image{
+    height:108px;
+    object-fit:cover;
+    border-bottom:1px solid #edf2ee;
+  }
+  .quick-product .time-pill{
+    left:7px;
+    bottom:7px;
+    padding:4px 7px;
+    border-radius:999px;
+    font-size:9px;
+    color:#0b5431;
+  }
+  .quick-product .badge{
+    background:#edf9f2;
+    color:#0a7142;
+    font-size:9px;
+    padding:3px 6px;
+  }
+  .quick-product .price{font-size:16px;color:#092b1b}
+  .quick-product .old-price{font-size:11px}
+  .quick-product .btn{
+    width:auto;
+    min-width:62px;
+    float:right;
+    margin-top:-30px;
+    background:#fff;
+    color:#0f8f53;
+    border:1px solid #0f8f53;
+    box-shadow:0 6px 14px rgba(15,143,83,.12);
+  }
+  .shop-pill{box-shadow:0 10px 24px rgba(9,43,27,.06)}
+  .mobile-nav{
+    height:64px;
+    border-top:1px solid #e4ebe5;
+    box-shadow:0 -12px 28px rgba(9,43,27,.08);
+  }
+  .mobile-nav a{
+    font-weight:700;
+    letter-spacing:.1px;
+  }
+  .mobile-nav a span{
+    width:27px;
+    height:25px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    font-size:18px;
+  }
+  .mobile-nav a:first-child span{
+    background:#e8f8ef;
+    color:#075c35;
+  }
+}
